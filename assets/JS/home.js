@@ -1,4 +1,6 @@
-// reuseable function for money input --> used in pay-bill section
+// reuseable function --> used in pay-bill section
+
+// get value from input
 function getInputValueNumber(id){
     const inputField = document.getElementById(id); 
     const inputFieldValue = inputField.value; 
@@ -10,6 +12,30 @@ function getInputValue(id){
     const inputField = document.getElementById(id); 
     const inputFieldValue = inputField.value;  
     return inputFieldValue; 
+}
+
+// get value from innerText
+function getInnerTextValueInNumber(id){
+    const getInnerTextField = document.getElementById(id); 
+    const getInnerTextFieldValue = getInnerTextField.innerText;
+    const getInnerTextFieldValueInNumber = parseInt(getInnerTextFieldValue);
+
+    return getInnerTextFieldValueInNumber; 
+}
+
+function getInnerTextValue(id){
+    const getInnerTextField = document.getElementById(id); 
+    const getInnerTextFieldValue = getInnerTextField.innerText;
+
+    return getInnerTextFieldValue; 
+}
+
+// Set innerTextValue
+
+function setInnerTextValue(id, innerTextUpdatedValue){
+    const targetElement = document.getElementById(id);
+    targetElement.innerText = innerTextUpdatedValue; 
+    return targetElement.innerText;  
 }
 
 // Add event listener for add-money
@@ -119,7 +145,7 @@ document.getElementById('btn-pay-now').addEventListener('click', (event)=>{
     const billerAccountNumber = getInputValue('biller-account-number'); 
     const payAmout = getInputValueNumber('paying-amount'); 
     const payPIN = getInputValueNumber('pay-pin');
-    const availableBalance = parseInt(document.getElementById('available-balance').innerText); 
+    const availableBalance = getInnerTextValueInNumber('available-balance');  
 
     if(billerAccountNumber.length !== 11){
         alert('Invalid Biller Account. Try Again');
@@ -135,8 +161,14 @@ document.getElementById('btn-pay-now').addEventListener('click', (event)=>{
     }
 
     const newBalance = availableBalance - payAmout; 
-    document.getElementById('available-balance').innerText = newBalance; 
-    alert('Successfully payment done. Check the balance.'); 
+
+    if(typeof(newBalance) != 'number'){ 
+        alert('Something went wrong. Try Again');
+    }
+    else{
+        setInnerTextValue('available-balance', newBalance);  
+        alert('Successfully payment done. Check the balance.');
+    }
     
 })
 
