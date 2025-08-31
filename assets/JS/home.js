@@ -36,7 +36,6 @@ function getInnerTextValue(id) {
 }
 
 // Set innerTextValue
-
 function setInnerTextValue(id, innerTextUpdatedValue) {
     const targetElement = document.getElementById(id);
     targetElement.innerText = innerTextUpdatedValue;
@@ -89,14 +88,11 @@ document.getElementById('btn-add-money').addEventListener('click', (event) => {
 
 })
 
-
 // Add event listener for cashout
 document.getElementById("btn-cash-out").addEventListener('click', (event) => {
     event.preventDefault();
 
     const withdrawPinNumber = 1234;
-
-    const bankName = document.getElementById('bank-name').value;
     const agentNumber = document.getElementById('agent-number').value;
     const withdrawAmount = parseInt(document.getElementById('withdraw-amount').value);
     const withdrawPin = parseInt(document.getElementById('withdraw-pin').value);
@@ -115,7 +111,7 @@ document.getElementById("btn-cash-out").addEventListener('click', (event) => {
 
     const data = {
         name: 'Cash Out',
-        subname: bankName,
+        subname: agentNumber,
         date: new Date().toLocaleTimeString()
     }
 
@@ -152,6 +148,7 @@ document.getElementById('btn-transfer-money').addEventListener('click', (event) 
 
     const data = {
         name: 'Transfer Money',
+        subname: agentAccountNumber,
         date: new Date().toLocaleTimeString()
     }
 
@@ -182,6 +179,7 @@ document.getElementById('btn-get-bonus').addEventListener('click', (event) => {
 
     const data = {
         name: 'Get Bonus',
+        subname: '',
         date: new Date().toLocaleTimeString()
     }
 
@@ -224,7 +222,8 @@ document.getElementById('btn-pay-now').addEventListener('click', (event) => {
     }
 
     const data = {
-        name: billName,
+        name:'Pay Bill',
+        subname: billName,
         date: new Date().toLocaleTimeString()
     }
 
