@@ -12,7 +12,7 @@ document.getElementById('btn-login').addEventListener('click', (event) => {
 
     if (mobileNumber === userGivenMobileNumber && pin === userGivenPinNumber) {
         // creating a fake session 
-        localStorage.setItem('isLoggedIn', 'true');
+        sessionStorage.setItem('isLoggedIn', 'true');
         window.location.href = './view/home.html';
     }
     else {

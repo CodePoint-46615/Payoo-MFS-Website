@@ -233,7 +233,7 @@ document.getElementById('btn-pay-now').addEventListener('click', (event) => {
 
 // add event listener on log out button 
 document.getElementById('btn-log-out').addEventListener('click', () => {
-    localStorage.removeItem('isLoggedIn');
+    sessionStorage.removeItem('isLoggedIn');
     window.location.href = '../index.html';
 })
 

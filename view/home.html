@@ -311,7 +311,7 @@
     <!-- sample login script without authectication-->
     <script>
         //redirecting to index.html
-        if (localStorage.getItem('isLoggedIn') !== 'true') {
+        if (sessionStorage.getItem('isLoggedIn') !== 'true') {
             window.location.href = '../index.html';
         }
     </script>
